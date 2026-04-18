@@ -1,14 +1,10 @@
-# Metabolic Network Biomarker Benchmarking
+# Metabolic Biomarker Discovery Benchmarking Framework
 
-A comprehensive benchmarking framework for metabolic network-based biomarker discovery integrating transcriptomics, metabolomics, and genome-scale metabolic models (GEMs).
+A benchmarking framework for evaluating constraint-based genome-scale metabolic modeling approaches (TAMBOOR, TIMBR, E-TIMBR) using matched transcriptomic and metabolomic data across Alzheimer’s disease, breast cancer, and colon cancer cohorts.
 
-This repository enables multi-omics integration, constraint-based modeling, and evaluation of predictive performance, network rewiring, and biomarker stability.
+The repository focuses on assessing the consistency, predictive performance, and stability of inferred metabolic signatures derived from Recon3D-based models compared to experimentally measured metabolomic profiles.
 
-## Repository Structure & Workflow
-
-The codebase is organized into five primary analytical modules.
-
-## 1. Mapping & Model Resources
+## Mapping & Model Resources
 
 This module contains metabolic model files and mapping utilities used across all analyses.
 
@@ -24,59 +20,29 @@ This module contains metabolic model files and mapping utilities used across all
 - `Reverse_Metabolite_Mapper.py`  
   Reverse mapping pipeline to infer gene-level features from metabolite signatures.
 
-## 2. Algorithm Analysis & Tier Analysis
-
-This module evaluates metabolic network-based biomarker discovery algorithms and provides hierarchical biological validation.
+## Analysis Codes
 
 - `Algorithm_Analysis.py`  
-  Benchmarking TAMBOOR, TIMBR, and Modified TIMBR against each other and data-driven baselines.
+  
+- `RFE_Recon3D.py`  
+  
+- `PCA_analysis.py`  
+
+- `corelation.py`  
+
+- `discrimination_analysis.py`  
+
+- `distance_analysis.py`  
+
+- `entropy.py`  
+
+- `signal_analysis.py`  
 
 - `tier_analysis.py`  
-  Tier-based hierarchical evaluation of transcriptomic signals using GEM-derived insights.
 
-## 3. Clinical Validation
+- `tier_analysis_2.py`
 
-This module assesses the clinical relevance and predictive performance of discovered biomarkers.
-
-- `log2_fold_change.py`  
-  Differential expression analysis using log2 fold change.
-
-- `log2fc_vs_HR.py`  
-  Association between log2 fold change and hazard ratios (HR), linking molecular signals to clinical outcomes.
-
-## 4. Classification
-
-This module contains methods for feature selection and supervised classification.
-
-- `RFE_Classification.py`  
-  Recursive Feature Elimination (RFE)-based classification for biomarker selection and validation.
-
-## 5. Cross-Omics Analysis
-
-This module investigates relationships between transcriptomic and metabolomic layers, focusing on integration, stability, and network structure.
-
-### Integration Methods
-- `SNF.py` — Similarity Network Fusion  
-- `CCA.py` — Canonical Correlation Analysis  
-- `multi_block_pls.py` — Multi-block Partial Least Squares  
-
-### Stability & Module Discovery
-- `stability.py`  
-- `synergy.py`  
-- `sparse_module_discovery.py`  
-
-### Network & Topology Analysis
-- `network_rewriting.py`  
-- `topology.py`  
-- `variance_decomposition.py`  
-
-### Nonlinear Discovery & Distance Metrics
-- `nonlinear_discovery.py`  
-- `nonlinear_dependency.py`  
-- `distance.py`  
-
-### Visualization
-- `heatmap_PCA.py`
+- `recon3D_performance_analysis.py`  
 
 ## 🧠 Manuscript Status
 
@@ -92,7 +58,33 @@ All analysis code is fully provided to support methodological reproducibility.
 
 ## How to Use
 
-Each script in this repository is designed to be executed independently.
+The workflow is partially sequential. The core pipeline should be executed in a defined order, followed by independent downstream analyses.
+
+### Recommended Execution Order
+
+1. **Mapping & preprocessing stage**
+   - `mapping.py`
+   - `Reverse_Metabolite_Mapper.py`
+
+2. **Core benchmarking baseline**
+   - `Algorithm_Analysis.py`
+
+3. **Reference-based feature selection**
+   - `RFE_Recon3D.py`
+
+### After completing the steps above, the remaining analysis scripts can be executed independently in any order:
+
+- `PCA_analysis.py`  
+- `corelation.py`  
+- `discrimination_analysis.py`  
+- `distance_analysis.py`  
+- `entropy.py`  
+- `signal_analysis.py`  
+- `tier_analysis.py`  
+- `tier_analysis_2.py`  
+- `recon3D_performance_analysis.py`
+
+---
 
 ### General Usage
 
